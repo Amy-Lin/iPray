@@ -11,14 +11,13 @@ import UIKit
 class prayerRequestItemCell: UITableViewCell {
 
     @IBOutlet weak var prayerRequestItemName: UILabel!
-    
-    
+    @IBOutlet weak var prayerRequestItemRequester: UILabel!
     
     var prayerRequestItem: PrayerRequestItem!{
-
         
         didSet{
             prayerRequestItemName.text = prayerRequestItem.prayerRequestName
+            prayerRequestItemRequester.text = prayerRequestItem.prayerRequester
         }
     }
 }

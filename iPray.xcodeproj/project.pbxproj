@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		730F80BC105719E264E4B312 /* Pods_iPray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B005DC657190CD6992D9BB /* Pods_iPray.framework */; };
+		C7009A131D422A6100FE7511 /* PrayerRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7009A121D422A6100FE7511 /* PrayerRequestViewController.swift */; };
+		C7009A151D4488EC00FE7511 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7009A141D4488EC00FE7511 /* DataManager.swift */; };
 		C719D4421D279C1C00EDEDAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C719D4411D279C1C00EDEDAD /* AppDelegate.swift */; };
 		C719D4441D279C1C00EDEDAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C719D4431D279C1C00EDEDAD /* ViewController.swift */; };
 		C719D4471D279C1C00EDEDAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C719D4451D279C1C00EDEDAD /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		40B005DC657190CD6992D9BB /* Pods_iPray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6223FC381AC69DD16176BED4 /* Pods-iPray.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPray.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPray/Pods-iPray.debug.xcconfig"; sourceTree = "<group>"; };
 		C3DE9BAC6249733031FFD246 /* Pods-iPray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPray.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPray/Pods-iPray.release.xcconfig"; sourceTree = "<group>"; };
+		C7009A121D422A6100FE7511 /* PrayerRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerRequestViewController.swift; sourceTree = "<group>"; };
+		C7009A141D4488EC00FE7511 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C719D43E1D279C1C00EDEDAD /* iPray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPray.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C719D4411D279C1C00EDEDAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C719D4431D279C1C00EDEDAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			children = (
 				C75081F01D320A6900BEF191 /* PrayerRequestItem.swift */,
 				C75081F21D320B1B00BEF191 /* SampleData.swift */,
+				C7009A141D4488EC00FE7511 /* DataManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				C719D4541D27A46100EDEDAD /* PrayerItemListViewController.swift */,
+				C7009A121D422A6100FE7511 /* PrayerRequestViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -247,10 +253,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C75081F71D320E5B00BEF191 /* prayerItemCell.swift in Sources */,
+				C7009A151D4488EC00FE7511 /* DataManager.swift in Sources */,
 				C75081F11D320A6900BEF191 /* PrayerRequestItem.swift in Sources */,
 				C719D4441D279C1C00EDEDAD /* ViewController.swift in Sources */,
 				C719D4551D27A46100EDEDAD /* PrayerItemListViewController.swift in Sources */,
 				C75081F31D320B1B00BEF191 /* SampleData.swift in Sources */,
+				C7009A131D422A6100FE7511 /* PrayerRequestViewController.swift in Sources */,
 				C719D4421D279C1C00EDEDAD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

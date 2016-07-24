@@ -11,21 +11,22 @@ import UIKit
 
 class PrayerItemListViewController: UITableViewController {
 
-    var prayerItems: [PrayerRequestItem] = prayerRequestItemsData
+    var prayerItems: [PrayerRequestItem] = DataManager.sharedInstance.PrayerRequestItems
 //    let realm = try! Realm()
 //    lazy var categories: Results<PrayerRequestItem> = { self.realm.objects(PrayerRequestItem) }()
     
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return prayerItems.count
+        return  DataManager.sharedInstance.PrayerRequestItems.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PrayCell", forIndexPath: indexPath) as! prayerRequestItemCell
-        let prayerItem = prayerItems[indexPath.row] as PrayerRequestItem
+        let prayerItem =  DataManager.sharedInstance.PrayerRequestItems[indexPath.row] as PrayerRequestItem
         cell.prayerRequestItem = prayerItem
-//        cell.textLabel?.text = prayerItem.prayerRequestName
-//        cell.detailTextLabel?.text = prayerItem.prayerRequester
         return cell
     }
  
