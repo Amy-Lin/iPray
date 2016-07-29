@@ -11,7 +11,8 @@ import UIKit
 
 class PrayerItemListViewController: UITableViewController {
 
-    var prayerItems: [PrayerRequestItem] = DataManager.sharedInstance.PrayerRequestItems
+    var prayerItems: [PrayerRequestItem] = DataManager.sharedInstance.prayerRequestItems
+    var selectedPrayerItemId: String = ""
 //    let realm = try! Realm()
 //    lazy var categories: Results<PrayerRequestItem> = { self.realm.objects(PrayerRequestItem) }()
     
@@ -20,14 +21,28 @@ class PrayerItemListViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  DataManager.sharedInstance.PrayerRequestItems.count
+        return  DataManager.sharedInstance.prayerRequestItems.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PrayCell", forIndexPath: indexPath) as! prayerRequestItemCell
-        let prayerItem =  DataManager.sharedInstance.PrayerRequestItems[indexPath.row] as PrayerRequestItem
+        let prayerItem =  DataManager.sharedInstance.prayerRequestItems[indexPath.row] as PrayerRequestItem
         cell.prayerRequestItem = prayerItem
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedPrayerItemId = DataManager.sharedInstance.prayerRequestItems[indexPath.row].prayerRequestId
+        
+        
+        self.performSegueWithIdentifier("fromListToItem", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if ( segue.identifier == "fromListToItem" ) {
+            let prayerRequestViewController = segue.destinationViewController as! PrayerRequestViewController
+            prayerRequestViewController.prayerRequestUuid = self.selectedPrayerItemId
+        }
     }
  
 }

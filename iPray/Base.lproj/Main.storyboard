@@ -84,13 +84,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requested by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCM-aw-0qv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pray for:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCM-aw-0qv">
                                 <rect key="frame" x="50" y="135" width="110" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pray for:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNv-QQ-3hu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requested by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNv-QQ-3hu">
                                 <rect key="frame" x="50" y="185" width="110" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -105,7 +105,7 @@
                                     <!--2016-07-03 11:50:21 +0000-->
                                 </date>
                                 <connections>
-                                    <action selector="dateValueEditingEnd:" destination="f7L-x6-fFa" eventType="editingDidEnd" id="tJ5-pg-eaT"/>
+                                    <action selector="dateValueChanged:" destination="f7L-x6-fFa" eventType="valueChanged" id="qOU-JD-ofo"/>
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FB9-ea-vaI">
@@ -158,7 +158,7 @@
                                     <constraint firstAttribute="height" constant="31" id="K8Q-Uj-TfG"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="answeredSwitchEditingEnd:" destination="f7L-x6-fFa" eventType="editingDidEnd" id="vba-tA-Fx4"/>
+                                    <action selector="switchValueChanged:" destination="f7L-x6-fFa" eventType="valueChanged" id="ddY-gB-tVP"/>
                                 </connections>
                             </switch>
                         </subviews>
@@ -187,11 +187,8 @@
                             <constraint firstItem="VNv-QQ-3hu" firstAttribute="top" secondItem="ZCM-aw-0qv" secondAttribute="bottom" constant="30" id="yiA-XV-b3J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Prayer Request" id="177-ff-oQS">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="mjf-f9-BuH"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Prayer Request" id="177-ff-oQS"/>
                     <connections>
-                        <outlet property="doneButton" destination="mjf-f9-BuH" id="zVg-3s-GKS"/>
                         <outlet property="prayerReqeustAnsweredSwitch" destination="2q1-hg-OQd" id="8TM-ee-w8l"/>
                         <outlet property="prayerRequestContentTextField" destination="o5t-8C-2uc" id="t2I-Xt-COS"/>
                         <outlet property="prayerRequestDatePicker" destination="pi1-kV-M0q" id="Mhd-7F-egt"/>
@@ -257,14 +254,10 @@
                         <barButtonItem title="Item" id="HIR-tb-YO4"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="tLi-ST-nQF">
-                        <barButtonItem key="leftBarButtonItem" title="Category" id="Ya0-e6-Wm2">
-                            <connections>
-                                <segue destination="WaT-n2-azc" kind="show" id="KNi-yc-C0I"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Category" id="Ya0-e6-Wm2"/>
                         <barButtonItem key="rightBarButtonItem" title="+" id="xzC-ZX-EuO">
                             <connections>
-                                <segue destination="f7L-x6-fFa" kind="show" id="A6R-br-eu8"/>
+                                <segue destination="f7L-x6-fFa" kind="show" identifier="fromListToItem" id="A6R-br-eu8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

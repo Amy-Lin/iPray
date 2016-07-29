@@ -10,7 +10,7 @@ import RealmSwift
 
 class PrayerRequestItem: Object {
     
-    dynamic var prayerRequestId: Int = 0
+    dynamic var prayerRequestId: String = NSUUID().UUIDString
     dynamic var prayerRequestName: String = ""
     dynamic var prayerRequester: String = ""
     dynamic var prayerRequestTime: NSDate = NSDate()
@@ -18,6 +18,7 @@ class PrayerRequestItem: Object {
     
     convenience init(name: String, requester: String, time: NSDate, answered: Bool) {
         self.init()
+        self.prayerRequestId = NSUUID().UUIDString
         self.prayerRequestName = name
         self.prayerRequester = requester
         self.prayerRequestTime = time

@@ -8,6 +8,29 @@
 
 
 class DataManager {
-    var PrayerRequestItems : [PrayerRequestItem] = [PrayerRequestItem]()
+    var prayerRequestItems : [PrayerRequestItem] = [PrayerRequestItem]()
     static let sharedInstance = DataManager()
+    
+    enum dataError : ErrorType {
+        case DataNotFound
+        case DataUnknowError
+    }
+    
+    func selectOneItem(id: String) -> PrayerRequestItem {
+        for item in prayerRequestItems {
+            if(item.prayerRequestId == id) {
+                return item
+            }
+        }
+        return PrayerRequestItem()
+    }
+    
+    func updateOneItem(newItem: PrayerRequestItem) {
+        for (index, item) in prayerRequestItems.enumerate() {
+            if (item.prayerRequestId == newItem.prayerRequestId){
+                prayerRequestItems.removeAtIndex(index)
+                prayerRequestItems.insert(newItem, atIndex: index)
+            }
+        }
+    }
 }

@@ -21,12 +21,20 @@ class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     var prayerRequest: PrayerRequestItem = PrayerRequestItem()
+    var prayerRequestUuid: String = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.enabled = false
         saveButton.backgroundColor = UIColor.lightGrayColor()
+        
+        self.prayerRequest = DataManager.sharedInstance.selectOneItem(prayerRequestUuid)
+        self.prayerRequesterTextField.text = self.prayerRequest.prayerRequester
+        self.prayerRequestContentTextField.text = self.prayerRequest.prayerRequestName
+        self.prayerRequestDatePicker.date = self.prayerRequest.prayerRequestTime
+        self.prayerReqeustAnsweredSwitch.on = self.prayerRequest.prayerRequestAnswered
+
     }
    
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -47,28 +55,37 @@ class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
             NSLog("Error: Unknown tag!");
         }
     
-        self.enableOrDisableButton()
+        
+        enableOrDisableButton()
 
         return true
     }
     
     func enableOrDisableButton() {
-        let shouldEnabble = prayerRequest.prayerRequester != "" && prayerRequest.prayerRequestName != ""
-        self.saveButton.backgroundColor = shouldEnabble ? UIColor.darkGrayColor() : UIColor.lightGrayColor()
-        self.saveButton.enabled = shouldEnabble
+        let shouldEnable = prayerRequest.prayerRequester != "" && prayerRequest.prayerRequestName != ""
+        self.saveButton.backgroundColor = shouldEnable ? UIColor.darkGrayColor() : UIColor.lightGrayColor()
+        self.saveButton.enabled = shouldEnable
     }
 
     @IBAction func saveButtonTouchUpInside(sender: UIButton) {
-        DataManager.sharedInstance.PrayerRequestItems.append(prayerRequest)
+        prayerRequest.prayerRequestTime = prayerRequestDatePicker.date
+        prayerRequest.prayerRequestAnswered = prayerReqeustAnsweredSwitch.on
+        if ( prayerRequestUuid == "") {
+            prayerRequest.prayerRequestId = NSUUID().UUIDString
+            DataManager.sharedInstance.prayerRequestItems.append(prayerRequest)
+        } else {
+            prayerRequest.prayerRequestId = prayerRequestUuid
+            DataManager.sharedInstance.updateOneItem(prayerRequest)
+        }
         navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func dateValueEditingEnd(sender: AnyObject) {
-        prayerRequest.prayerRequestTime = sender.date
+    @IBAction func dateValueChanged(sender: AnyObject) {
+        enableOrDisableButton()
     }
     
-    @IBAction func answeredSwitchEditingEnd(sender: AnyObject) {
-        prayerRequest.prayerRequestAnswered = sender.on
+    @IBAction func switchValueChanged(sender: AnyObject) {
+        enableOrDisableButton()
     }
 
 }
