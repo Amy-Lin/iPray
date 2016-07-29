@@ -10,16 +10,16 @@ import UIKit
 
 class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
 
-    let kPrayerRequesterTextFieldTag = 1
-    let kPrayerRequestContentTextFieldTag = 2
+    let kPrayerRequestContentTextFieldTag = 1
+    let kPrayerRequesterTextFieldTag = 2
     
-    @IBOutlet weak var prayerRequesterTextField: UITextField!
     @IBOutlet weak var prayerRequestContentTextField: UITextField!
+    @IBOutlet weak var prayerRequesterTextField: UITextField!
     @IBOutlet weak var prayerRequestDatePicker: UIDatePicker!
     @IBOutlet weak var prayerReqeustAnsweredSwitch: UISwitch!
     
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+
     var prayerRequest: PrayerRequestItem = PrayerRequestItem()
     var prayerRequestUuid: String = ""
     

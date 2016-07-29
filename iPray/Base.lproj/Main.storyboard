@@ -96,18 +96,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pi1-kV-M0q">
-                                <rect key="frame" x="50" y="235" width="500" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="APR-l3-gBR"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="489239421.88447601">
-                                    <!--2016-07-03 11:50:21 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="dateValueChanged:" destination="f7L-x6-fFa" eventType="valueChanged" id="qOU-JD-ofo"/>
-                                </connections>
-                            </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FB9-ea-vaI">
                                 <rect key="frame" x="50" y="385" width="90" height="20"/>
                                 <constraints>
@@ -139,6 +127,16 @@
                                     <outlet property="delegate" destination="f7L-x6-fFa" id="Vgc-Y3-Hqn"/>
                                 </connections>
                             </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-hg-OQd">
+                                <rect key="frame" x="501" y="374" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="8wa-p7-KHl"/>
+                                    <constraint firstAttribute="height" constant="31" id="K8Q-Uj-TfG"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="switchValueChanged:" destination="f7L-x6-fFa" eventType="valueChanged" id="ddY-gB-tVP"/>
+                                </connections>
+                            </switch>
                             <button autoresizesSubviews="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ava-fu-pCD">
                                 <rect key="frame" x="50" y="455" width="500" height="36"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,16 +149,18 @@
                                     <action selector="saveButtonTouchUpInside:" destination="f7L-x6-fFa" eventType="touchUpInside" id="pf9-Jk-Ul0"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-hg-OQd">
-                                <rect key="frame" x="501" y="374" width="51" height="31"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pi1-kV-M0q">
+                                <rect key="frame" x="50" y="235" width="500" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="49" id="8wa-p7-KHl"/>
-                                    <constraint firstAttribute="height" constant="31" id="K8Q-Uj-TfG"/>
+                                    <constraint firstAttribute="height" constant="80" id="APR-l3-gBR"/>
                                 </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="489239421.88447601">
+                                    <!--2016-07-03 11:50:21 +0000-->
+                                </date>
                                 <connections>
-                                    <action selector="switchValueChanged:" destination="f7L-x6-fFa" eventType="valueChanged" id="ddY-gB-tVP"/>
+                                    <action selector="dateValueChanged:" destination="f7L-x6-fFa" eventType="valueChanged" id="qOU-JD-ofo"/>
                                 </connections>
-                            </switch>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -190,9 +190,9 @@
                     <navigationItem key="navigationItem" title="Prayer Request" id="177-ff-oQS"/>
                     <connections>
                         <outlet property="prayerReqeustAnsweredSwitch" destination="2q1-hg-OQd" id="8TM-ee-w8l"/>
-                        <outlet property="prayerRequestContentTextField" destination="o5t-8C-2uc" id="t2I-Xt-COS"/>
+                        <outlet property="prayerRequestContentTextField" destination="ah8-EW-rzO" id="hYU-gK-CYz"/>
                         <outlet property="prayerRequestDatePicker" destination="pi1-kV-M0q" id="Mhd-7F-egt"/>
-                        <outlet property="prayerRequesterTextField" destination="ah8-EW-rzO" id="bUc-bM-Zbj"/>
+                        <outlet property="prayerRequesterTextField" destination="o5t-8C-2uc" id="mva-30-GLC"/>
                         <outlet property="saveButton" destination="ava-fu-pCD" id="gzb-dB-fBQ"/>
                     </connections>
                 </viewController>
