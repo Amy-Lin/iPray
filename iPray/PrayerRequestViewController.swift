@@ -9,15 +9,11 @@
 import UIKit
 
 class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
-
-    let kPrayerRequestContentTextFieldTag = 1
-    let kPrayerRequesterTextFieldTag = 2
     
     @IBOutlet weak var prayerRequestContentTextField: UITextField!
     @IBOutlet weak var prayerRequesterTextField: UITextField!
     @IBOutlet weak var prayerRequestDatePicker: UIDatePicker!
     @IBOutlet weak var prayerReqeustAnsweredSwitch: UISwitch!
-    
     @IBOutlet weak var saveButton: UIButton!
 
     var prayerRequest: PrayerRequestItem = PrayerRequestItem()
@@ -29,50 +25,38 @@ class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
         saveButton.enabled = false
         saveButton.backgroundColor = UIColor.lightGrayColor()
         
-        self.prayerRequest = DataManager.sharedInstance.selectOneItem(prayerRequestUuid)
-        self.prayerRequesterTextField.text = self.prayerRequest.prayerRequester
-        self.prayerRequestContentTextField.text = self.prayerRequest.prayerRequestName
-        self.prayerRequestDatePicker.date = self.prayerRequest.prayerRequestTime
-        self.prayerReqeustAnsweredSwitch.on = self.prayerRequest.prayerRequestAnswered
-
-    }
-   
-    func textFieldDidBeginEditing(textField: UITextField) {
-
+        let item = DataManager.sharedInstance.selectOneItem(prayerRequestUuid)
+        self.prayerRequest.prayerRequester = item.prayerRequester
+        self.prayerRequest.prayerRequestName = item.prayerRequestName
+        self.prayerRequest.prayerRequestTime = item.prayerRequestTime
+        self.prayerRequest.prayerRequestAnswered = item.prayerRequestAnswered
+        self.prayerRequest.prayerRequestId = item.prayerRequestId
+        
+        prayerRequestContentTextField.text = prayerRequest.prayerRequestName
+        prayerRequesterTextField.text = prayerRequest.prayerRequester
+        prayerRequestDatePicker.date = prayerRequest.prayerRequestTime
+        prayerReqeustAnsweredSwitch.on = prayerRequest.prayerRequestAnswered
     }
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let userEnteredString = textField.text
-        
-        let newString = (userEnteredString! as NSString).stringByReplacingCharactersInRange(range, withString: string) as String
-
-        switch textField.tag {
-        case kPrayerRequesterTextFieldTag:
-            prayerRequest.prayerRequester = newString
-        case kPrayerRequestContentTextFieldTag:
-            prayerRequest.prayerRequestName = newString
-        default:
-            NSLog("Error: Unknown tag!");
-        }
-    
-        
         enableOrDisableButton()
-
         return true
     }
     
     func enableOrDisableButton() {
-        let shouldEnable = prayerRequest.prayerRequester != "" && prayerRequest.prayerRequestName != ""
+        let shouldEnable =  (self.prayerRequestContentTextField.text != "") && (self.prayerRequesterTextField.text != "")
         self.saveButton.backgroundColor = shouldEnable ? UIColor.darkGrayColor() : UIColor.lightGrayColor()
         self.saveButton.enabled = shouldEnable
     }
 
     @IBAction func saveButtonTouchUpInside(sender: UIButton) {
+        prayerRequest.prayerRequestName = prayerRequestContentTextField.text!
+        prayerRequest.prayerRequester = prayerRequesterTextField.text!
         prayerRequest.prayerRequestTime = prayerRequestDatePicker.date
         prayerRequest.prayerRequestAnswered = prayerReqeustAnsweredSwitch.on
         if ( prayerRequestUuid == "") {
             prayerRequest.prayerRequestId = NSUUID().UUIDString
-            DataManager.sharedInstance.prayerRequestItems.append(prayerRequest)
+            DataManager.sharedInstance.appendOneItem(prayerRequest)
         } else {
             prayerRequest.prayerRequestId = prayerRequestUuid
             DataManager.sharedInstance.updateOneItem(prayerRequest)

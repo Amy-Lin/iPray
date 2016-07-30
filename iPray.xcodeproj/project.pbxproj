@@ -17,7 +17,6 @@
 		C719D44C1D279C1C00EDEDAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C719D44A1D279C1C00EDEDAD /* LaunchScreen.storyboard */; };
 		C719D4551D27A46100EDEDAD /* PrayerItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C719D4541D27A46100EDEDAD /* PrayerItemListViewController.swift */; };
 		C75081F11D320A6900BEF191 /* PrayerRequestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75081F01D320A6900BEF191 /* PrayerRequestItem.swift */; };
-		C75081F31D320B1B00BEF191 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75081F21D320B1B00BEF191 /* SampleData.swift */; };
 		C75081F71D320E5B00BEF191 /* prayerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75081F61D320E5B00BEF191 /* prayerItemCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 		C719D44D1D279C1C00EDEDAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C719D4541D27A46100EDEDAD /* PrayerItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerItemListViewController.swift; sourceTree = "<group>"; };
 		C75081F01D320A6900BEF191 /* PrayerRequestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrayerRequestItem.swift; path = Models/PrayerRequestItem.swift; sourceTree = "<group>"; };
-		C75081F21D320B1B00BEF191 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleData.swift; path = Models/SampleData.swift; sourceTree = "<group>"; };
 		C75081F61D320E5B00BEF191 /* prayerItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = prayerItemCell.swift; path = Cells/prayerItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				C75081F01D320A6900BEF191 /* PrayerRequestItem.swift */,
-				C75081F21D320B1B00BEF191 /* SampleData.swift */,
 				C7009A141D4488EC00FE7511 /* DataManager.swift */,
 			);
 			name = Models;
@@ -257,7 +254,6 @@
 				C75081F11D320A6900BEF191 /* PrayerRequestItem.swift in Sources */,
 				C719D4441D279C1C00EDEDAD /* ViewController.swift in Sources */,
 				C719D4551D27A46100EDEDAD /* PrayerItemListViewController.swift in Sources */,
-				C75081F31D320B1B00BEF191 /* SampleData.swift in Sources */,
 				C7009A131D422A6100FE7511 /* PrayerRequestViewController.swift in Sources */,
 				C719D4421D279C1C00EDEDAD /* AppDelegate.swift in Sources */,
 			);

@@ -7,16 +7,14 @@
 //
 
 import UIKit
-//import RealmSwift
 
 class PrayerItemListViewController: UITableViewController {
 
     var prayerItems: [PrayerRequestItem] = DataManager.sharedInstance.prayerRequestItems
     var selectedPrayerItemId: String = ""
-//    let realm = try! Realm()
-//    lazy var categories: Results<PrayerRequestItem> = { self.realm.objects(PrayerRequestItem) }()
-    
+   
     override func viewDidAppear(animated: Bool) {
+        prayerItems = DataManager.sharedInstance.getAllItemsFromDb()
         self.tableView.reloadData()
     }
 
@@ -32,9 +30,7 @@ class PrayerItemListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedPrayerItemId = DataManager.sharedInstance.prayerRequestItems[indexPath.row].prayerRequestId
-        
-        
+        self.selectedPrayerItemId = DataManager.sharedInstance.prayerRequestItems[indexPath.row].prayerRequestId      
         self.performSegueWithIdentifier("fromListToItem", sender: nil)
     }
     

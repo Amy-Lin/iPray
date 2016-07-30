@@ -6,15 +6,12 @@
 //  Copyright © 2016 Amy Lin. All rights reserved.
 //
 
+import RealmSwift
 
 class DataManager {
-    var prayerRequestItems : [PrayerRequestItem] = [PrayerRequestItem]()
     static let sharedInstance = DataManager()
-    
-    enum dataError : ErrorType {
-        case DataNotFound
-        case DataUnknowError
-    }
+    let realm = try! Realm()
+    var prayerRequestItems : [PrayerRequestItem] = [PrayerRequestItem]()
     
     func selectOneItem(id: String) -> PrayerRequestItem {
         for item in prayerRequestItems {
@@ -25,11 +22,27 @@ class DataManager {
         return PrayerRequestItem()
     }
     
+    func getAllItemsFromDb() -> [PrayerRequestItem]{
+        let items = Array(realm.objects(PrayerRequestItem.self))
+        prayerRequestItems = items
+        return items
+    }
+    
+    func appendOneItem(newItem: PrayerRequestItem){
+        prayerRequestItems.append(newItem)        
+        try! realm.write {
+            realm.add(newItem)
+        }
+    }
+    
     func updateOneItem(newItem: PrayerRequestItem) {
         for (index, item) in prayerRequestItems.enumerate() {
             if (item.prayerRequestId == newItem.prayerRequestId){
                 prayerRequestItems.removeAtIndex(index)
                 prayerRequestItems.insert(newItem, atIndex: index)
+                try! realm.write {
+                    realm.add(newItem, update: true)
+                }
             }
         }
     }

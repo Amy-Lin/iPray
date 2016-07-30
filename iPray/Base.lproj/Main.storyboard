@@ -257,11 +257,14 @@
                         <barButtonItem key="leftBarButtonItem" title="Category" id="Ya0-e6-Wm2"/>
                         <barButtonItem key="rightBarButtonItem" title="+" id="xzC-ZX-EuO">
                             <connections>
-                                <segue destination="f7L-x6-fFa" kind="show" identifier="fromListToItem" id="A6R-br-eu8"/>
+                                <segue destination="f7L-x6-fFa" kind="show" identifier="" id="A6R-br-eu8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="f7L-x6-fFa" kind="show" identifier="fromListToItem" id="7og-pM-FvC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMa-bg-89k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,4 +289,7 @@
             <point key="canvasLocation" x="1939" y="63"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="A6R-br-eu8"/>
+    </inferredMetricsTieBreakers>
 </document>
