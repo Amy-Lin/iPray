@@ -19,7 +19,7 @@ class PrayerItemListViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  DataManager.sharedInstance.prayerRequestItems.count
+        return DataManager.sharedInstance.prayerRequestItems.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -27,6 +27,17 @@ class PrayerItemListViewController: UITableViewController {
         let prayerItem =  DataManager.sharedInstance.prayerRequestItems[indexPath.row] as PrayerRequestItem
         cell.prayerRequestItem = prayerItem
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            DataManager.sharedInstance.deleteOneItem(indexOfItemToBeDelete: indexPath.row)
+        }
+        self.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

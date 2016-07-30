@@ -46,4 +46,15 @@ class DataManager {
             }
         }
     }
+    
+    func deleteOneItem(indexOfItemToBeDelete index: Int){
+        for (i, item) in prayerRequestItems.enumerate(){
+            if (i == index){
+                prayerRequestItems.removeAtIndex(i)
+                try! realm.write {
+                    realm.delete(item)
+                }
+            }
+        }
+    }
 }
