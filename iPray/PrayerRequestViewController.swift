@@ -19,6 +19,8 @@ class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
     var prayerRequest: PrayerRequestItem = PrayerRequestItem()
     var prayerRequestUuid: String = ""
     
+    let kPrayerRequestContentTextFieldTag = 1
+    let kPrayerRequesterTextFieldTag = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +41,35 @@ class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        enableOrDisableButton()
+        let userEnteredString = textField.text
+        let newString = (userEnteredString! as NSString).stringByReplacingCharactersInRange(range, withString: string) as String
+
+        let shouldEnable = checkIfBothTextFieldsEmpty(newString, textField: textField)
+    
+        enableOrDisableButton(shouldEnable)
         return true
     }
     
-    func enableOrDisableButton() {
-        let shouldEnable =  (self.prayerRequestContentTextField.text != "") && (self.prayerRequesterTextField.text != "")
+    func checkIfBothTextFieldsEmpty(newString: String, textField: UITextField) -> Bool {
+        if (newString == "") {
+            return false
+        }
+        if (textField.tag == kPrayerRequestContentTextFieldTag) {
+            return (prayerRequesterTextField.text != "")
+        }else if (textField.tag == kPrayerRequesterTextFieldTag){
+            return (prayerRequestContentTextField.text != "")
+        }
+        return false
+    }
+    
+    func enableOrDisableButton(shouldEnable: Bool) {
         self.saveButton.backgroundColor = shouldEnable ? UIColor.darkGrayColor() : UIColor.lightGrayColor()
         self.saveButton.enabled = shouldEnable
+    }
+    
+    func enableOrDisableButtonForNonTextField() {
+        let shouldEnable =  (self.prayerRequestContentTextField.text != "") && (self.prayerRequesterTextField.text != "")
+        enableOrDisableButton(shouldEnable)
     }
 
     @IBAction func saveButtonTouchUpInside(sender: UIButton) {
@@ -65,11 +88,11 @@ class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func dateValueChanged(sender: AnyObject) {
-        enableOrDisableButton()
+        enableOrDisableButtonForNonTextField()
     }
     
     @IBAction func switchValueChanged(sender: AnyObject) {
-        enableOrDisableButton()
+        enableOrDisableButtonForNonTextField()
     }
 
 }
