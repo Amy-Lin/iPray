@@ -23,7 +23,7 @@ class DataManager {
     }
     
     func getAllItemsFromDb() -> [PrayerRequestItem]{
-        let items = Array(realm.objects(PrayerRequestItem.self))
+        let items = Array(realm.objects(PrayerRequestItem.self).sorted("prayerRequestTime", ascending: false))
         prayerRequestItems = items
         return items
     }
