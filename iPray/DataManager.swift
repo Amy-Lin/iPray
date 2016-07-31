@@ -57,4 +57,18 @@ class DataManager {
             }
         }
     }
+    
+    func setAnswerFlagForOneItem(indexOfItemToBeFlagged index: Int) {
+        realm.beginWrite()
+        for (i, item) in prayerRequestItems.enumerate(){
+            if (i == index){
+                if (item.prayerRequestAnswered == true) {
+                    item.prayerRequestAnswered = false
+                } else {
+                    item.prayerRequestAnswered = true
+                }
+            }
+        }
+        try! realm.commitWrite()
+    }
 }

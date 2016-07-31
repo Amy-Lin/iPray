@@ -32,12 +32,21 @@ class PrayerItemListViewController: UITableViewController {
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { (action, indexPath) in
             DataManager.sharedInstance.deleteOneItem(indexOfItemToBeDelete: indexPath.row)
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
+        
+        let answered = UITableViewRowAction(style: .Normal, title: "Answered") { (action, indexPath) in
+            DataManager.sharedInstance.setAnswerFlagForOneItem(indexOfItemToBeFlagged: indexPath.row)
+            self.tableView.reloadData()
+        }
+        answered.backgroundColor = UIColor.darkGrayColor()
+        
+        return [delete, answered]
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

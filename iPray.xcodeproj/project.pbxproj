@@ -162,6 +162,7 @@
 				TargetAttributes = {
 					C719D43D1D279C1C00EDEDAD = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = E7ZC9ALZC3;
 					};
 				};
 			};
@@ -371,6 +372,7 @@
 			baseConfigurationReference = 6223FC381AC69DD16176BED4 /* Pods-iPray.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iPray/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AmyLin.iPray;
@@ -383,6 +385,7 @@
 			baseConfigurationReference = C3DE9BAC6249733031FFD246 /* Pods-iPray.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iPray/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AmyLin.iPray;
