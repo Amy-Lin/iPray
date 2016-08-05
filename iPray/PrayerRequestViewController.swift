@@ -95,4 +95,9 @@ class PrayerRequestViewController: UIViewController, UITextFieldDelegate {
         enableOrDisableButtonForNonTextField()
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+
 }
