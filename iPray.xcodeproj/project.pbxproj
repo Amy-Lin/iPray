@@ -18,6 +18,7 @@
 		C719D4551D27A46100EDEDAD /* PrayerItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C719D4541D27A46100EDEDAD /* PrayerItemListViewController.swift */; };
 		C75081F11D320A6900BEF191 /* PrayerRequestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75081F01D320A6900BEF191 /* PrayerRequestItem.swift */; };
 		C75081F71D320E5B00BEF191 /* prayerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75081F61D320E5B00BEF191 /* prayerItemCell.swift */; };
+		C7F1EE681D5DFB9200FD6BDD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F1EE671D5DFB9200FD6BDD /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C719D4541D27A46100EDEDAD /* PrayerItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerItemListViewController.swift; sourceTree = "<group>"; };
 		C75081F01D320A6900BEF191 /* PrayerRequestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrayerRequestItem.swift; path = Models/PrayerRequestItem.swift; sourceTree = "<group>"; };
 		C75081F61D320E5B00BEF191 /* prayerItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = prayerItemCell.swift; path = Cells/prayerItemCell.swift; sourceTree = "<group>"; };
+		C7F1EE671D5DFB9200FD6BDD /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Helper/Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		C719D4401D279C1C00EDEDAD /* iPray */ = {
 			isa = PBXGroup;
 			children = (
+				C7F1EE661D5DFB7000FD6BDD /* Helper */,
 				C75081F51D320DFA00BEF191 /* Cells */,
 				C75081F41D320BA400BEF191 /* ViewController */,
 				C75081EF1D3209F900BEF191 /* Models */,
@@ -125,6 +128,14 @@
 				C75081F61D320E5B00BEF191 /* prayerItemCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		C7F1EE661D5DFB7000FD6BDD /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C7F1EE671D5DFB9200FD6BDD /* Utils.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 				C75081F11D320A6900BEF191 /* PrayerRequestItem.swift in Sources */,
 				C719D4441D279C1C00EDEDAD /* ViewController.swift in Sources */,
 				C719D4551D27A46100EDEDAD /* PrayerItemListViewController.swift in Sources */,
+				C7F1EE681D5DFB9200FD6BDD /* Utils.swift in Sources */,
 				C7009A131D422A6100FE7511 /* PrayerRequestViewController.swift in Sources */,
 				C719D4421D279C1C00EDEDAD /* AppDelegate.swift in Sources */,
 			);
